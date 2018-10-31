@@ -76,6 +76,7 @@ router.post("/login", function(req, res, next) {
 });
 
 router.get("/user", function(req, res) {
+  console.log('get/user');
   if (req.user) {
     const user = req.user;
     return res.send(serializeUser(user));
