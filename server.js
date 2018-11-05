@@ -18,7 +18,7 @@ const fetch = require("node-fetch");
 mongoose.Promise = global.Promise;
 
 const app = express();
-app.options("*", cors({ origin: "http://localhost:3000", credentials: true }));
+app.options("*", cors({ origin: CLIENT_HOST, credentials: true }));
 app.use(cors({ origin: CLIENT_HOST, credentials: true }));
 
 app.use(session({ secret: "mysecret", maxAge: 24 * 60 * 60 * 1000 }));
