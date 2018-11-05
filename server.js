@@ -1,4 +1,5 @@
 require("dotenv").config();
+const { PORT, DATABASE_URL, CLIENT_HOST } = require("./config");
 const bodyParser = require("body-parser");
 let urlencodedParser = bodyParser.urlencoded({ extended: false });
 const express = require("express");
@@ -18,7 +19,7 @@ mongoose.Promise = global.Promise;
 
 const app = express();
 app.options("*", cors({ origin: "http://localhost:3000", credentials: true }));
-app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+app.use(cors({ origin: CLIENT_HOST, credentials: true }));
 
 app.use(session({ secret: "mysecret", maxAge: 24 * 60 * 60 * 1000 }));
 
@@ -91,8 +92,6 @@ app.get("/search", async function(req, res) {
     res.sendStatus(500);
   }
 });
-
-const { PORT, DATABASE_URL } = require("./config");
 
 let server;
 
