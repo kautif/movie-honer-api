@@ -76,8 +76,8 @@ app.get("/search", async function(req, res) {
               movie.vote_average >= 8
                 ? "good"
                 : movie.vote_average >= 5
-                  ? "ok"
-                  : "bad"
+                ? "ok"
+                : "bad"
           }))
           .filter(movie => movie.year == year)
       );
